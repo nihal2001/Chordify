@@ -10,7 +10,10 @@ The note 'C4' corresponds to middle C, so by default, the chords are centered ar
 """
 def get_notes_of_chord(roman_numeral_chord: str, k: str):
     roman_chord = roman.RomanNumeral(roman_numeral_chord, key.Key(k))
-    return [str(p) for p in roman_chord.pitches]
+    pitches = [str(p) for p in roman_chord.pitches]
+    pitches = [p.replace('+', '#').replace('-', 'b') for p in pitches]
+    return pitches
+
 
 
 def get_notes_of_progression(progression: list[str], k: str):
